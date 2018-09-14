@@ -1,26 +1,36 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FileIOApplication
+namespace example
 {
-    class Program
+    class prime
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            FileStream F = new FileStream("test.dat", FileMode.OpenOrCreate,
-               FileAccess.ReadWrite);
-
-            for (int i = 1; i <= 20; i++)
+            Console.Write("Enter a Number : ");
+            int num;
+            num = Convert.ToInt32(Console.ReadLine());
+            int k;
+            k = 0;
+            for (int i = 1; i <= num; i++)
             {
-                F.WriteByte((byte)i);
+                if (num % i == 0)
+                {
+                    k++;
+                }
             }
-            F.Position = 0;
-            for (int i = 0; i <= 20; i++)
+            if (k == 2)
             {
-                Console.Write(F.ReadByte() + " ");
+                Console.WriteLine("Entered Number is a Prime Number and the Largest Factor is {0}", num);
             }
-            F.Close();
-            Console.ReadKey();
+            else
+            {
+                Console.WriteLine("Not a Prime Number");
+            }
+            Console.ReadLine();
         }
     }
 }
